@@ -1,0 +1,72 @@
+.profile-image {
+  width: 35px;
+  height: 35px;
+  margin: 0px 50px;
+}
+
+.website-logo {
+  width: 145px;
+  height: 33px;
+}
+
+.hamburger {
+  margin: 0px 20px;
+}
+.theme-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+@media screen and (max-width: 767px) {
+  .website-logo {
+    width: 100px;
+    height: 40px;
+  }
+}
+.logout {
+  background-color: transparent;
+  width: 100px;
+  height: 35px;
+  border: 2px solid #3b82f6;
+  border-radius: 5px;
+  color: #3b82f6;
+  font-family: 'Roboto';
+  font-weight: bold;
+  cursor: pointer;
+}
+.popup-content {
+  width: 30%;
+}
+.popup-content-light {
+  background-color: #f8fafc;
+  box-shadow: 1px 1px 5px 2px #bfbfbf;
+  border-radius: 5px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.popup-content-dark {
+  background-color: #181818;
+  box-shadow: 1px 1px 5px 2px #bfbfbf;
+  border-radius: 5px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (max-width: 767px) {
+  .popup-content {
+    width: 75%;
+    height: 160px;
+  }
+}
+.button-flex-container {
+  display: flex;
+}
+.mobile-log-out {
+  background-color: transparent;
+  border: none;
+}

@@ -1,0 +1,12 @@
+.align {
+  align-self: center;
+}
+.check-box {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+.check-box-container {
+  display: flex;
+  justify-content: center;
+}

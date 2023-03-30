@@ -1,0 +1,14 @@
+.retry-button {
+  background-color: #4f46e5;
+  width: 100px;
+  height: 35px;
+  color: #ffffff;
+  font-weight: 500;
+  border-radius: 5px;
+  border: none;
+  font-family: 'Roboto';
+  cursor: pointer;
+}
+.failure-view-image {
+  width: 40%;
+}

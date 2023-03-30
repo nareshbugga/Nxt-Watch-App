@@ -1,0 +1,24 @@
+.thumbnailUrl {
+  width: 250px;
+  height: 150px;
+}
+.profile-image {
+  width: 60px;
+  height: 60px;
+  margin-right: 15px;
+}
+.list-item {
+  width: 275px;
+  height: 300px;
+  margin-bottom: 60px;
+  margin-right: 17px;
+}
+.profile-container {
+  display: flex;
+}
+.description-container {
+  display: flex;
+}
+.card-navigation-link {
+  text-decoration: none;
+}

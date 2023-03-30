@@ -1,0 +1,14 @@
+.trending-sub-container {
+  width: 75%;
+}
+.trending-container {
+  display: flex;
+}
+@media screen and (max-width: 767px) {
+  .trending-sub-container {
+    width: 100%;
+  }
+}
+.trending-un-order {
+  list-style-type: none;
+}

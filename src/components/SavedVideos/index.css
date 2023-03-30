@@ -1,0 +1,21 @@
+.saved-sub-container {
+  width: 75%;
+}
+@media screen and (max-width: 767px) {
+  .saved-sub-container {
+    width: 100%;
+  }
+}
+.no-saved-image {
+  width: 50%;
+}
+.saved-un-order {
+  list-style-type: none;
+}
+.no-saved-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}

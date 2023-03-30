@@ -1,0 +1,26 @@
+.logo {
+  width: 140px;
+  height: 30px;
+}
+.get-it-now {
+  background-color: transparent;
+  font-family: 'Roboto';
+  border: 1px solid #181818;
+  color: #383838;
+  font-weight: 500;
+  padding: 10px;
+}
+.banner-logo-container {
+  display: flex;
+  justify-content: space-between;
+}
+.close-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.banner-description {
+  font-family: 'Roboto';
+  font-size: 17px;
+  color: #383838;
+}

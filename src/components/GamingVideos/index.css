@@ -1,0 +1,23 @@
+.gaming-sub-container {
+  width: 75%;
+}
+@media screen and (max-width: 767px) {
+  .gaming-sub-container {
+    width: 100%;
+  }
+}
+.gaming-un-order {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+.gaming-image {
+  width: 200px;
+  height: 250px;
+}
+.gaming-list-item {
+  margin: 15px 20px;
+}
+.game-flex-container {
+  display: flex;
+}

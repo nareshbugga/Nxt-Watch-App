@@ -1,0 +1,11 @@
+@media screen and (max-width: 767px) {
+  .nav-container {
+    display: none;
+  }
+}
+.list-items {
+  margin-bottom: 30px;
+}
+.list-nav-link {
+  text-decoration: none;
+}
