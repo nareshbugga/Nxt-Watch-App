@@ -1,14 +1,13 @@
 import {Component} from 'react'
 import ReactPlayer from 'react-player'
 import Cookies from 'js-cookie'
+import Loader from 'react-loader-spinner'
 import {formatDistanceToNow} from 'date-fns'
 import {BiLike, BiDislike} from 'react-icons/bi'
 import {MdPlaylistAdd} from 'react-icons/md'
 import Header from '../Header'
 import SideBarCard from '../SideBarCard'
 import SavedContext from '../../SavedVideoContext/SavedContext'
-import FailureCard from '../FailureCard'
-import LoaderCard from '../LoaderCard'
 import NxtThemeContext from '../../NxtThemeContext/ThemeContext'
 import './index.css'
 import {
@@ -21,6 +20,9 @@ import {
   VideoItemContainer,
   VideoItemHeading,
   ChannelDescription,
+  NoVideoHeading,
+  NoVideoDescription,
+  FailureContainer,
 } from './StyledComponent'
 
 const viewsList = {
@@ -146,6 +148,10 @@ class VideoItemDetails extends Component {
                 const saveText = saveStatus ? 'Saved' : 'Save'
                 const saveColor = saveStatus ? '#2563eb' : '#64748b'
 
+                const addVideo = () => {
+                  updateVideo(videoItemDetails)
+                }
+
                 return (
                   <>
                     <ReactPlayer
@@ -189,7 +195,7 @@ class VideoItemDetails extends Component {
                           <button
                             type="button"
                             className="button"
-                            onClick={() => updateVideo(videoItemDetails)}
+                            onClick={addVideo}
                           >
                             <div className="logo-flex">
                               <MdPlaylistAdd size={25} color={saveColor} />
@@ -227,10 +233,57 @@ class VideoItemDetails extends Component {
   }
 
   videoItemDetailsFailureContainer = () => (
-    <FailureCard onRetry={this.onRetry} />
+    <NxtThemeContext.Consumer>
+      {value => {
+        const {theme} = value
+        const failureImage = theme
+          ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png'
+          : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png'
+        return (
+          <FailureContainer value={theme}>
+            <img
+              src={failureImage}
+              alt="failure view"
+              className="failure-view-image"
+            />
+            <NoVideoHeading value={theme}>
+              Oops! Something Went Wrong
+            </NoVideoHeading>
+            <NoVideoDescription>
+              We are having some trouble to complete your request. Please
+              try again.
+            </NoVideoDescription>
+            <button
+              type="button"
+              className="retry-button"
+              onClick={this.onRetry}
+            >
+              Retry
+            </button>
+          </FailureContainer>
+        )
+      }}
+    </NxtThemeContext.Consumer>
   )
 
-  videoItemDetailsLoaderContainer = () => <LoaderCard />
+  videoItemDetailsLoaderContainer = () => (
+    <NxtThemeContext.Consumer>
+      {value => {
+        const {theme} = value
+        const loaderColor = theme ? '#ffffff' : '#0f0f0f'
+        return (
+          <div className="loader-container" data-testid="loader">
+            <Loader
+              type="ThreeDots"
+              color={loaderColor}
+              height="50"
+              width="50"
+            />
+          </div>
+        )
+      }}
+    </NxtThemeContext.Consumer>
+  )
 
   videoItemDetailsResultView = () => {
     const {viewStatus} = this.state

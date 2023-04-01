@@ -1,11 +1,10 @@
 import {Component} from 'react'
 import {AiFillFire} from 'react-icons/ai'
+import Loader from 'react-loader-spinner'
 import Cookies from 'js-cookie'
 import TrendingVideoCardItem from '../TrendingVideoCardItem'
 import Header from '../Header'
 import SideBarCard from '../SideBarCard'
-import FailureCard from '../FailureCard'
-import LoaderCard from '../LoaderCard'
 import NxtThemeContext from '../../NxtThemeContext/ThemeContext'
 import './index.css'
 
@@ -14,6 +13,9 @@ import {
   FireLogo,
   TrendingContainer,
   TrendingHeaderHeading,
+  NoVideoHeading,
+  NoVideoDescription,
+  FailureContainer,
 } from './StyledComponent'
 
 const viewsList = {
@@ -97,9 +99,58 @@ class TrendingVideos extends Component {
     )
   }
 
-  trendingFailureContainer = () => <FailureCard onRetry={this.onRetry} />
+  trendingFailureContainer = () => (
+    <NxtThemeContext.Consumer>
+      {value => {
+        const {theme} = value
+        const failureImage = theme
+          ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png'
+          : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png'
+        return (
+          <FailureContainer value={theme}>
+            <img
+              src={failureImage}
+              alt="failure view"
+              className="failure-view-image"
+            />
+            <NoVideoHeading value={theme}>
+              Oops! Something Went Wrong
+            </NoVideoHeading>
+            <NoVideoDescription>
+              We are having some trouble to complete your request. Please
+              try again.
+            </NoVideoDescription>
+            <button
+              type="button"
+              className="retry-button"
+              onClick={this.onRetry}
+            >
+              Retry
+            </button>
+          </FailureContainer>
+        )
+      }}
+    </NxtThemeContext.Consumer>
+  )
 
-  trendingLoaderContainer = () => <LoaderCard />
+  trendingLoaderContainer = () => (
+    <NxtThemeContext.Consumer>
+      {value => {
+        const {theme} = value
+        const loaderColor = theme ? '#ffffff' : '#0f0f0f'
+        return (
+          <div className="loader-container" data-testid="loader">
+            <Loader
+              type="ThreeDots"
+              color={loaderColor}
+              height="50"
+              width="50"
+            />
+          </div>
+        )
+      }}
+    </NxtThemeContext.Consumer>
+  )
 
   trendingResultView = () => {
     const {viewStatus} = this.state

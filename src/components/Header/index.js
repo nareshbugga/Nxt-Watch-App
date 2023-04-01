@@ -65,7 +65,7 @@ class Header extends Component {
                   <img
                     src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png"
                     alt="profile"
-                    className="profile-image"
+                    className="profile"
                   />
                   <div>
                     <Popup

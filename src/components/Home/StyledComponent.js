@@ -2,7 +2,7 @@
 import styled from 'styled-components'
 
 export const HomeContainer = styled.div`
-  background-color: ${props => (props.value ? '#181818' : '#f9f9f9 ')};
+  background-color: ${props => (props.value ? '#0f0f0f' : '#f9f9f9 ')};
   background-size: cover;
   min-height: 100vh;
 `
@@ -41,6 +41,14 @@ export const NoVideoDescription = styled.p`
 `
 export const NoVideosContainer = styled.div`
   background-color: ${props => (props.value ? '#181818' : '#f9f9f9 ')};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`
+export const FailureContainer = styled.div`
+  background-color: ${props => (props.value ? '#0f0f0f' : '#f9f9f9')};
   display: flex;
   flex-direction: column;
   justify-content: center;

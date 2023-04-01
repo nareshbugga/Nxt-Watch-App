@@ -21,3 +21,24 @@
 .game-flex-container {
   display: flex;
 }
+.retry-button {
+  background-color: #4f46e5;
+  width: 100px;
+  height: 35px;
+  color: #ffffff;
+  font-weight: 500;
+  border-radius: 5px;
+  border: none;
+  font-family: 'Roboto';
+  cursor: pointer;
+}
+.failure-view-image {
+  width: 40%;
+}
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}

@@ -7,7 +7,7 @@ export const VideoItemContainer = styled.div`
   min-height: 100vh;
 `
 
-export const VideoItemHeading = styled.h1`
+export const VideoItemHeading = styled.p`
   font-family: 'Roboto';
   font-weight: 500;
   color: ${props => (props.value ? '#f1f1f1' : '#383838')};
@@ -53,4 +53,25 @@ export const DisLike = styled.p`
   font-size: 15px;
   color: ${props => (props.value ? '#64748b ' : '#2563eb')};
   margin-right: 5px;
+`
+export const FailureContainer = styled.div`
+  background-color: ${props => (props.value ? '#0f0f0f' : '#f9f9f9')};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`
+
+export const NoVideoHeading = styled.h1`
+  font-family: 'Roboto';
+  font-weight: bold;
+  font-size: 23px;
+  color: ${props => (props.value ? '#f9f9f9' : '#1e293b')};
+`
+export const NoVideoDescription = styled.p`
+  font-family: 'Roboto';
+  font-size: 18px;
+  font-weight: 500;
+  color: ${props => (props.value ? '#94a3b8' : ' #64748b')};
 `

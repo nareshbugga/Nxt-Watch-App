@@ -1,12 +1,11 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
+import Loader from 'react-loader-spinner'
 import {AiOutlineSearch} from 'react-icons/ai'
 import Header from '../Header'
 import SideBarCard from '../SideBarCard'
 import BannerCard from '../BannerCard'
 import VideoCard from '../VideoCard'
-import FailureCard from '../FailureCard'
-import LoaderCard from '../LoaderCard'
 import NxtThemeContext from '../../NxtThemeContext/ThemeContext'
 import './index.css'
 import {
@@ -17,6 +16,7 @@ import {
   NoVideoHeading,
   NoVideoDescription,
   NoVideosContainer,
+  FailureContainer,
 } from './StyledComponent'
 
 const viewsList = {
@@ -50,7 +50,7 @@ class Home extends Component {
     }
     const response = await fetch(homeVideosApiUrl, options)
     const data = await response.json()
-    if (response.ok) {
+    if (response.ok === true) {
       const {videos} = data
       const updateVideosData = videos.map(eachData => ({
         id: eachData.id,
@@ -133,9 +133,58 @@ class Home extends Component {
     )
   }
 
-  homeFailureContainer = () => <FailureCard onRetry={this.onRetry} />
+  homeFailureContainer = () => (
+    <NxtThemeContext.Consumer>
+      {value => {
+        const {theme} = value
+        const failureImage = theme
+          ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png'
+          : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png'
+        return (
+          <FailureContainer value={theme}>
+            <img
+              src={failureImage}
+              alt="failure view"
+              className="failure-view-image"
+            />
+            <NoVideoHeading value={theme}>
+              Oops! Something Went Wrong
+            </NoVideoHeading>
+            <NoVideoDescription>
+              We are having some trouble to complete your request. Please
+              try again.
+            </NoVideoDescription>
+            <button
+              type="button"
+              className="retry-button"
+              onClick={this.onRetry}
+            >
+              Retry
+            </button>
+          </FailureContainer>
+        )
+      }}
+    </NxtThemeContext.Consumer>
+  )
 
-  homeContainerLoader = () => <LoaderCard />
+  homeContainerLoader = () => (
+    <NxtThemeContext.Consumer>
+      {value => {
+        const {theme} = value
+        const loaderColor = theme ? '#ffffff' : '#0f0f0f'
+        return (
+          <div className="loader-container" data-testid="loader">
+            <Loader
+              type="ThreeDots"
+              color={loaderColor}
+              height="50"
+              width="50"
+            />
+          </div>
+        )
+      }}
+    </NxtThemeContext.Consumer>
+  )
 
   resultViewStatus = () => {
     const {viewStatus} = this.state
@@ -166,11 +215,8 @@ class Home extends Component {
                   <SideBarCard />
                   <div className="home-sub-container">
                     {bannerShow ? (
-                      <div className="banner-container">
-                        <BannerCard
-                          onClose={this.onClose}
-                          bannerShow={bannerShow}
-                        />
+                      <div className="banner-container" data-testid="banner">
+                        <BannerCard onClose={this.onClose} />
                       </div>
                     ) : null}
                     <SearchContainer>
@@ -184,12 +230,9 @@ class Home extends Component {
                         type="button"
                         data-testid="searchButton"
                         value={theme}
+                        onClick={this.onSearch}
                       >
-                        <AiOutlineSearch
-                          size={20}
-                          className="search-icon"
-                          onClick={this.onSearch}
-                        />
+                        <AiOutlineSearch size={20} className="search-icon" />
                       </SearchButton>
                     </SearchContainer>
                     {this.resultViewStatus()}
